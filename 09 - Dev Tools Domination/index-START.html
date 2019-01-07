@@ -10,6 +10,7 @@
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const paragraph = document.querySelector('p')
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -18,28 +19,60 @@
     }
 
     // Regular
-
-    // Interpolated
+    console.log('hello');
+      
+    // Interpolated %s now done with ``
+    console.log('hello %s', 'daniel');
 
     // Styled
-
+    console.log('%c I am some css styled text', 'font-size:20px; background:red;');
+    
     // warning!
+    console.warn('Warning!!');
 
     // Error :|
-
+    console.error("An Error");
+    
     // Info
-
+    // console.info("Daniel is awesome") Doesn't work anymore
     // Testing
-
+    console.assert(1===2, `That's wrong!!`)
     // clearing
-
+    // clear();
     // Viewing DOM Elements
-
+    console.log(paragraph); //Element itself
+    console.dir(paragraph); //Dropdown with all methods
+    
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`)
+      
+    });
 
     // counting
-
+    console.count("Daniel");
+    console.count("Daniel");
+    console.count("Daniel");
+    console.count("Daniel");
+    console.count("Nicolas");
+    console.count("Nicolas");
+    console.count("Nicolas");
+    console.count("Daniel");
+    console.count("Nicolas");
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(json => {
+        console.timeEnd('fetching data');
+        console.log(json);
+      });
+
+    // Table
+    console.table(dogs)
 
   </script>
 </body>

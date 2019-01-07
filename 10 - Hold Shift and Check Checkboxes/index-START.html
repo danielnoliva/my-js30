@@ -96,6 +96,28 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+  let lastChecked;
+  function handleCheck(event) {
+    // Since this function run on click, I need to verify that they are using the shift key and also that they are checking it.
+    let inBetween = false;
+    if (event.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }
+        if(inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+  
 </script>
 </body>
 </html>
