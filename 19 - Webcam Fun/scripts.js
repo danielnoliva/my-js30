@@ -28,9 +28,9 @@ function paintToCanvas() {
     let pixels = ctx.getImageData(0, 0, width, height);
     // Apply Affects to pixels
     // pixels = redEffect(pixels);
-    // pixels = rgbSplit(pixels);
+    pixels = rgbSplit(pixels);
     // ctx.globalAlpha = 0.8;
-    pixels = greenScreen(pixels);
+    // pixels = greenScreen(pixels);
     //Put pixels back into canvas
     ctx.putImageData(pixels, 0, 0);
   }, 16);
